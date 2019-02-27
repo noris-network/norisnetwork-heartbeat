@@ -2,19 +2,13 @@
 #
 # @summary Installs and configures heartbeat
 # 
-# TODO new Example for Heartbeat
 # @example Basic configuration with two modules and output to Elasticsearch
 #  class{'heartbeat':
-#    modules => [
+#    monitors => [
 #      {
-#       'module' => 'file_integrity',
-#       'enabled' => true,
-#       'paths' => ['/bin', '/usr/bin', '/sbin', '/usr/sbin', '/etc'],
-#      },
-#      {
-#       'module' => 'heartd',
-#       'enabled' => true,
-#       'heart_rules' => '-a always,exit -F arch=b32 -S all -F key=32bit-abi',
+#       'type' => 'icmp',
+#       'schedule' => '*/5 * * * * * *',
+#       'hosts' => ['myhost', 'myotherhost'],
 #      },
 #    ],
 #    outputs => {

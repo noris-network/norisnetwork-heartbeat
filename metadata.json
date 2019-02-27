@@ -1,6 +1,6 @@
 {
   "name": "puppet-heartbeat",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "author": "norisnetwork",
   "summary": "This module installs and configures the Heartbeat shipper by Elastic.", 
   "license": "Apache-2.0",
