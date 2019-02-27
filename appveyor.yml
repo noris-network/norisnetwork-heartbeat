@@ -1,3 +1,4 @@
+---
 version: 1.1.x.{build}
 skip_commits:
   message: /^\(?doc\)?.*/
@@ -22,19 +23,19 @@ environment:
     -
       PUPPET_GEM_VERSION: ~> 4.0
       RUBY_VERSION: 21
-      CHECK: spec
+      CHECK: parallel_spec
     -
       PUPPET_GEM_VERSION: ~> 4.0
       RUBY_VERSION: 21-x64
-      CHECK: spec
+      CHECK: parallel_spec
     -
       PUPPET_GEM_VERSION: ~> 5.0
       RUBY_VERSION: 24
-      CHECK: spec
+      CHECK: parallel_spec
     -
       PUPPET_GEM_VERSION: ~> 5.0
       RUBY_VERSION: 24-x64
-      CHECK: spec
+      CHECK: parallel_spec
 matrix:
   fast_finish: true
 install:
@@ -55,3 +56,4 @@ notifications:
     on_build_success: false
     on_build_failure: false
     on_build_status_changed: false
+    
