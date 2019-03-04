@@ -14,7 +14,7 @@ describe 'heartbeat', 'type' => 'class' do
         let(:params) { { 'ensure' => 'present' } }
 
         it do
-          is_expected.to contain_package('heartbeat').with(
+          is_expected.to contain_package('heartbeat-elastic').with(
             'ensure' => 'latest',
           )
         end
@@ -23,7 +23,7 @@ describe 'heartbeat', 'type' => 'class' do
         let(:params) { { 'ensure' => 'absent' } }
 
         it do
-          is_expected.to contain_package('heartbeat').with(
+          is_expected.to contain_package('heartbeat-elastic').with(
             'ensure' => 'absent',
           )
           is_expected.to contain_service('heartbeat').with(
@@ -36,7 +36,7 @@ describe 'heartbeat', 'type' => 'class' do
         let(:params) { { 'package_ensure' => '6.2.0' } }
 
         it do
-          is_expected.to contain_package('heartbeat').with(
+          is_expected.to contain_package('heartbeat-elastic').with(
             'ensure' => '6.2.0',
           )
         end
