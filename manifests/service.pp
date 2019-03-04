@@ -29,7 +29,7 @@ class heartbeat::service {
     $service_enabled = false
   }
 
-  service {'heartbeat':
+  service {'heartbeat-elastic':
     ensure   => $service_status,
     enable   => $service_enabled,
     provider => $heartbeat::service_provider,
