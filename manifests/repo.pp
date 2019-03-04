@@ -1,7 +1,7 @@
 # heartbeat::repo
 # @api private
 #
-# @summary It manages the package repositories to isntall heartbeat
+# @summary It manages the package repositories to install heartbeat
 class heartbeat::repo {
   case $heartbeat::manage_repo {
     true: {

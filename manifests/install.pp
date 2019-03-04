@@ -11,7 +11,7 @@ class heartbeat::install {
       $package_ensure = $heartbeat::ensure
     }
   }
-  package{'heartbeat':
+  package{'heartbeat-elastic':
     ensure => $package_ensure,
   }
 }
