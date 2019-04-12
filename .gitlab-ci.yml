@@ -1,52 +1,95 @@
 ---
 stages:
-  - rubocop
-  - syntax
-  - metadata
-  - rspec
-
-cache:
-  paths:
-    - vendor/bundle
+  - test_puppet4
+  - test_puppet5
+  - test_puppet6
 
 before_script:
   - bundle -v
   - rm Gemfile.lock || true
   - gem update --system
+  - gem update bundler
   - gem --version
   - bundle -v
-  - bundle install --without system_tests --path vendor/bundle --jobs $(nproc)
+  - bundle install --without system_tests
 
-rubocop 2.4.4-Puppet ~> 5.5:
-  stage: rubocop
-  image: ruby:2.4.4
+rubocop-puppet4:
+  stage: test_puppet4
+  image: ruby:2.3
   script:
     - bundle exec rake rubocop
-  variables:
-    PUPPET_GEM_VERSION: '~> 5.5'
 
-syntax 2.4.4-Puppet ~> 5.5:
-  stage: syntax
-  image: ruby:2.4.4
+syntax-puppet4:
+  stage: test_puppet4
+  image: ruby:2.3
   script:
     - bundle exec rake syntax lint
-  variables:
-    PUPPET_GEM_VERSION: '~> 5.5'
 
-metadata 2.4.4-Puppet ~> 5.5:
-  stage: metadata
-  image: ruby:2.4.4
+metadata-puppet4:
+  stage: test_puppet4
+  image: ruby:2.3
   script:
     - bundle exec rake metadata_lint
-  variables:
-    PUPPET_GEM_VERSION: '~> 5.5'
 
-rspec 2.4.4-Puppet ~> 5.5:
-  stage: rspec
-  image: ruby:2.4.4
+rspec-puppet-puppet4:
+  stage: test_puppet4
+  image: ruby:2.3
+  variables:
+    PUPPET_GEM_VERSION: ~> 4.0
   script:
     - bundle update
-    - bundle exec rake $CHECK
+    - bundle exec rake spec
+
+rubocop-puppet5:
+  stage: test_puppet5
+  image: ruby:2.4
+  script:
+    - bundle exec rake rubocop
+
+syntax-puppet5:
+  stage: test_puppet5
+  image: ruby:2.4
+  script:
+    - bundle exec rake syntax lint
+
+metadata-puppet5:
+  stage: test_puppet5
+  image: ruby:2.4
+  script:
+    - bundle exec rake metadata_lint
+
+rspec-puppet-puppet5:
+  stage: test_puppet5
+  image: ruby:2.4
   variables:
-    PUPPET_GEM_VERSION: '~> 5.5'
-    CHECK: spec
+    PUPPET_GEM_VERSION: ~> 5.0
+  script:
+    - bundle update
+    - bundle exec rake spec
+
+rubocop-puppet6:
+  stage: test_puppet6
+  image: ruby:2.5
+  script:
+    - bundle exec rake rubocop
+
+syntax-puppet6:
+  stage: test_puppet6
+  image: ruby:2.5
+  script:
+    - bundle exec rake syntax lint
+
+metadata-puppet6:
+  stage: test_puppet6
+  image: ruby:2.5
+  script:
+    - bundle exec rake metadata_lint
+
+rspec-puppet-puppet6:
+  stage: test_puppet6
+  image: ruby:2.5
+  variables:
+    PUPPET_GEM_VERSION: ~> 6.0
+  script:
+    - bundle update
+    - bundle exec rake spec
