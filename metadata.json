@@ -1,12 +1,12 @@
 {
-  "name": "puppet-heartbeat",
-  "version": "0.2.0",
+  "name": "norisnetwork-heartbeat",
+  "version": "0.1.0",
   "author": "norisnetwork",
   "summary": "This module installs and configures the Heartbeat shipper by Elastic.", 
   "license": "Apache-2.0",
-  "source": "https://github.com/noris-network/puppet-heartbeat",
-  "project_page": "https://github.com/noris-network/puppet-heartbeat",
-  "issues_url": "https://github.com/noris-network/puppet-heartbeat",
+  "source": "https://github.com/noris-network/norisnetwork-heartbeat",
+  "project_page": "https://github.com/noris-network/norisnetwork-heartbeat",
+  "issues_url": "https://github.com/noris-network/norisnetwork-heartbeat/issues",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 4.13.0 < 5.0.0"},
     {"name":"puppetlabs-apt","version_requirement":">= 4.0.0 < 5.0.0"},
