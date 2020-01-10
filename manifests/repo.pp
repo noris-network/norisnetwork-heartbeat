@@ -1,8 +1,21 @@
 # heartbeat::repo
 # @api private
 #
-# @summary It manages the package repositories to isntall heartbeat
-class heartbeat::repo {
+# @summary Manages the package repositories on the target nodes to install heartbeat
+class heartbeat::repo inherits heartbeat {
+  $apt_repo_url = $heartbeat::apt_repo_url ? {
+    undef => "https://artifacts.elastic.co/packages/${heartbeat::major_version}.x/apt",
+    default => $heartbeat::apt_repo_url,
+  }
+  $yum_repo_url = $heartbeat::yum_repo_url ? {
+    undef => "https://artifacts.elastic.co/packages/${heartbeat::major_version}.x/yum",
+    default => $heartbeat::yum_repo_url,
+  }
+  $gpg_key_url = $heartbeat::gpg_key_url ? {
+    undef => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
+    default => $heartbeat::gpg_key_url,
+  }
+
   if ($heartbeat::manage_repo == true) and ($heartbeat::ensure == 'present') {
     case $facts['osfamily'] {
       'Debian': {
@@ -10,24 +23,25 @@ class heartbeat::repo {
         if !defined(Apt::Source['beats']) {
           apt::source{'beats':
             ensure   => $heartbeat::ensure,
-            location => 'https://artifacts.elastic.co/packages/6.x/apt',
+            location => $apt_repo_url,
             release  => 'stable',
             repos    => 'main',
             key      => {
               id     => '46095ACC8548582C1A2699A9D27D666CD88E42B4',
-              source => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
+              source => $gpg_key_url,
             },
           }
+          Class['apt::update'] -> Package['heartbeat-elastic']
         }
       }
       'RedHat': {
         if !defined(Yumrepo['beats']) {
           yumrepo{'beats':
             ensure   => $heartbeat::ensure,
-            descr    => 'Elastic repository for 6.x packages',
-            baseurl  => 'https://artifacts.elastic.co/packages/6.x/yum',
+            descr    => "Elastic repository for ${heartbeat::major_version}.x packages",
+            baseurl  => $yum_repo_url,
             gpgcheck => 1,
-            gpgkey   => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
+            gpgkey   => $gpg_key_url,
             enabled  => 1,
           }
         }
@@ -40,12 +54,12 @@ class heartbeat::repo {
         }
         if !defined (Zypprepo['beats']) {
           zypprepo{'beats':
-            baseurl     => 'https://artifacts.elastic.co/packages/6.x/yum',
+            baseurl     => $yum_repo_url,
             enabled     => 1,
             autorefresh => 1,
             name        => 'beats',
             gpgcheck    => 1,
-            gpgkey      => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
+            gpgkey      => $gpg_key_url,
             type        => 'yum',
           }
         }
