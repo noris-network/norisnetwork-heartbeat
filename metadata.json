@@ -8,10 +8,22 @@
   "project_page": "https://github.com/noris-network/norisnetwork-heartbeat",
   "issues_url": "https://github.com/noris-network/norisnetwork-heartbeat/issues",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 5.1.0 < 6.0.0"},
-    {"name":"puppetlabs-apt","version_requirement":">= 6.0.0 < 7.0.0"},
-    {"name":"puppet-zypprepo","version_requirement":">= 2.2.0 < 3.0.0"},
-    {"name":"puppetlabs-yumrepo_core","version_requirement":">= 1.0.0 < 2.0.0"}
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 5.1.0 < 6.0.0"
+    },
+    {
+      "name": "puppetlabs-apt",
+      "version_requirement": ">= 6.0.0 < 7.0.0"
+    },
+    {
+      "name": "puppet-zypprepo",
+      "version_requirement": ">= 2.2.0 < 3.0.0"
+    },
+    {
+      "name": "puppetlabs-yumrepo_core",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
+    }
   ],
   "operatingsystem_support": [
     {
@@ -51,6 +63,13 @@
       "version_requirement": ">= 4.7.0 < 7.0.0"
     }
   ],
-  "pdk-version": "1.10.0",
-  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git"
+  "tags": [
+    "heartbeat",
+    "elasticsearch",
+    "logstash",
+    "elastic"
+  ],
+  "pdk-version": "1.15.0",
+  "template-url": "pdk-default#1.15.0",
+  "template-ref": "tags/1.15.0-0-g0bc522e"
 }
