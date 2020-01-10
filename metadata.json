@@ -1,8 +1,8 @@
 {
   "name": "norisnetwork-heartbeat",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "norisnetwork",
-  "summary": "This module installs and configures the Heartbeat shipper by Elastic.",
+  "summary": "Module for installing, managing and cinfiguring the Heartbeat lightweight shipper for uptime monitoring by elastic.",
   "license": "Apache-2.0",
   "source": "https://github.com/noris-network/norisnetwork-heartbeat",
   "project_page": "https://github.com/noris-network/norisnetwork-heartbeat",
@@ -10,15 +10,15 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 5.1.0 < 6.0.0"
+      "version_requirement": ">= 4.13.0 < 6.0.0"
     },
     {
       "name": "puppetlabs-apt",
-      "version_requirement": ">= 6.0.0 < 7.0.0"
+      "version_requirement": ">= 4.0.0 < 7.0.0"
     },
     {
       "name": "puppet-zypprepo",
-      "version_requirement": ">= 2.2.0 < 3.0.0"
+      "version_requirement": ">= 2.0.0 < 3.0.0"
     },
     {
       "name": "puppetlabs-yumrepo_core",
@@ -47,13 +47,13 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "16.04"
+        "18.04"
       ]
     },
     {
       "operatingsystem": "SLES",
       "operatingsystemrelease": [
-        "12"
+        "15"
       ]
     }
   ],
@@ -66,8 +66,11 @@
   "tags": [
     "heartbeat",
     "elasticsearch",
+    "elastic_stack",
+    "elastic",
+    "norisnetwork",
     "logstash",
-    "elastic"
+    "kibana"
   ],
   "pdk-version": "1.15.0",
   "template-url": "pdk-default#1.15.0",
