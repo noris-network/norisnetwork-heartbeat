@@ -1,6 +1,6 @@
 # norisnetwork-heartbeat
 
-[![Build Status](https://travis-ci.org/noris-network/norisnetwork-heartbeat.svg?branch=master)](https://travis-ci.org/noris-network/norisnetwork-heartbeat)
+![Travis (.org)](https://img.shields.io/travis/noris-network/norisnetwork-heartbeat) [![GitHub license](https://img.shields.io/github/license/noris-network/norisnetwork-heartbeat)](https://github.com/noris-network/norisnetwork-heartbeat/blob/master/LICENSE) ![GitHub repo size](https://img.shields.io/github/repo-size/noris-network/norisnetwork-heartbeat) ![Puppet Forge version](https://img.shields.io/puppetforge/v/norisnetwork/heartbeat) ![Puppet Forge – PDK version](https://img.shields.io/puppetforge/pdk-version/norisnetwork/heartbeat)
 
 ## Table of Contents
 
