@@ -77,6 +77,7 @@ class heartbeat (
   Optional[Variant[Stdlib::HTTPUrl, Stdlib::HTTPSUrl]] $apt_repo_url  = undef,
   Optional[Variant[Stdlib::HTTPUrl, Stdlib::HTTPSUrl]] $yum_repo_url  = undef,
   Optional[Variant[Stdlib::HTTPUrl, Stdlib::HTTPSUrl]] $gpg_key_url   = undef,
+  String $gpg_key_id                                                  = '',
   Enum['enabled', 'running', 'disabled', 'unmanaged'] $service_ensure = 'enabled',
   String $package_ensure                                              = 'latest',
   String $config_file_mode                                            = '0644',
@@ -86,6 +87,8 @@ class heartbeat (
   Optional[Array[Hash]] $monitors                                     = undef,
   Optional[Array[Hash]] $processors                                   = undef,
   Optional[Hash] $xpack                                               = undef,
+  Optional[Hash] $monitoring                                          = undef,
+  Optional[Hash] $setup                                               = undef,
 ) {
 
   contain heartbeat::repo

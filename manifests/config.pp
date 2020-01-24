@@ -15,11 +15,13 @@ class heartbeat::config {
     'fields_under_root'         => $heartbeat::fields_under_root,
     'fields'                    => $heartbeat::fields,
     'xpack'                     => $heartbeat::xpack,
+    'monitoring'                => $heartbeat::monitoring,
     'tags'                      => $heartbeat::tags,
     'queue'                     => $heartbeat::queue,
     'logging'                   => $heartbeat::logging,
     'output'                    => $heartbeat::outputs,
     'processors'                => $heartbeat::processors,
+    'setup'                     => $heartbeat::setup,
     'heartbeat'                 => {
       'monitors'                 => $heartbeat::monitors,
     },
