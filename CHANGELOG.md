@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v0.2.2](https://github.com/noris-network/norisnetwork-heartbeat/tree/v0.2.2) (2020-07-17)
+
+[Full Changelog](https://github.com/noris-network/norisnetwork-heartbeat/compare/v0.2.1...v0.2.2)
+
+# Added
+
+- remove **Puppet version 4 testing**
+- switched to latest Puppet Development Kit **PDK 1.18.0.0**
+
 ## [v0.2.1](https://github.com/noris-network/norisnetwork-heartbeat/tree/v0.2.1) (2020-01-24)
 
 [Full Changelog](https://github.com/noris-network/norisnetwork-heartbeat/compare/v0.2.0...v0.2.1)
