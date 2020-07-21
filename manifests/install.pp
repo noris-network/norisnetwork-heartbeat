@@ -14,7 +14,7 @@ class heartbeat::install {
 
   case $::kernel {
     'windows': {
-      package{ 'Beats heartbeat 7.8.0 (X86_64)':
+      package{ 'Beats heartbeat 7.8.0 (x86_64)':
         ensure => $heartbeat::ensure,
         source => "${heartbeat::package_source}/${heartbeat::package_name}",
       }
