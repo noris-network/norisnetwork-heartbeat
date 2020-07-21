@@ -3,7 +3,20 @@
 #
 # @summary It configures the heartbeat shipper
 class heartbeat::config {
-  $heartbeat_bin = '/usr/share/heartbeat/bin/heartbeat'
+
+  File {
+    owner => $heartbeat::user,
+    group => $heartbeat::group,
+  }
+
+  case $::kernel {
+    'Linux': {
+      $heartbeat_bin = "${heartbeat::path_home}/heartbeat"
+    }
+    'windows': {
+      $heartbeat_bin = "${heartbeat::path_home}\heartbeat.exe"
+    }
+  }
 
   $validate_cmd = $heartbeat::disable_configtest ? {
     true => undef,
@@ -27,10 +40,8 @@ class heartbeat::config {
     },
   })
 
-  file { '/etc/heartbeat/heartbeat.yml':
+  file { "${heartbeat::path_config}/heartbeat.yml":
     ensure       => $heartbeat::ensure,
-    owner        => 'root',
-    group        => 'root',
     mode         => $heartbeat::config_file_mode,
     content      => inline_template('<%= @heartbeat_config.to_yaml()  %>'),
     validate_cmd => $validate_cmd,
