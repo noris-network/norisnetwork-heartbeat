@@ -11,7 +11,18 @@ class heartbeat::install {
       $package_ensure = $heartbeat::ensure
     }
   }
-  package{'heartbeat-elastic':
-    ensure => $package_ensure,
+
+  case $facts[::kernel] {
+    'Linux': {
+      package{ 'heartbeat-elastic':
+        ensure => $package_ensure,
+      }
+    }
+    'windows': {
+      package{ 'heartbeat'
+        ensure => $package_ensure,
+        source => "${heartbeat::package_source}/${heartbeat::package_name}"
+      }
+    }
   }
 }

@@ -80,6 +80,8 @@ class heartbeat (
   String $gpg_key_id                                                  = '',
   Enum['enabled', 'running', 'disabled', 'unmanaged'] $service_ensure = 'enabled',
   String $package_ensure                                              = 'latest',
+  String $package_name                                                = undef,
+  String $package_source                                              = undef,
   String $config_file_mode                                            = '0644',
   Boolean $disable_configtest                                         = false,
   Optional[Array[String]] $tags                                       = undef,
