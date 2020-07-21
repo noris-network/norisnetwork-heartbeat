@@ -5,8 +5,8 @@ heartbeat::logging:
 
 heartbeat::package_name: 'heartbeat-7.8.0-windows-x86_64.msi'
 heartbeat::package_source: 'https://artifacts.elastic.co/downloads/beats/heartbeat'
-heartbeat::path_home: 'C:\Program Files\Elastic\Beats\7.8.0\heartbeat'
-heartbeat::path_config: 'C:\ProgramData\Elastic\Beats\heartbeat'
-heartbeat::path_data: 'C:\ProgramData\Elastic\Beats\heartbeat\data'
+heartbeat::path_home: 'C:/Program Files/Elastic/Beats/7.8.0/heartbeat'
+heartbeat::path_config: 'C:/ProgramData/Elastic/Beats/heartbeat'
+heartbeat::path_data: 'C:/ProgramData/Elastic/Beats/heartbeat/data'
 heartbeat::service_name: 'heartbeat'
 heartbeat::service_provider: 'windows'

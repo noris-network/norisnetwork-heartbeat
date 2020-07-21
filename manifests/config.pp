@@ -10,11 +10,11 @@ class heartbeat::config {
   }
 
   case $::kernel {
-    'Linux': {
-      $heartbeat_bin = "${heartbeat::path_home}/heartbeat"
-    }
     'windows': {
-      $heartbeat_bin = "${heartbeat::path_home}\heartbeat.exe"
+      $heartbeat_bin = "${heartbeat::path_home}/heartbeat.exe"
+    }
+    default: {
+      $heartbeat_bin = "${heartbeat::path_home}/heartbeat"
     }
   }
 
