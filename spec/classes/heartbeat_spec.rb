@@ -15,7 +15,7 @@ describe 'heartbeat', 'type' => 'class' do
 
         it do
           is_expected.to contain_package('heartbeat-elastic').with(
-            'ensure' => 'latest',
+            'ensure' => 'present',
           )
         end
       end

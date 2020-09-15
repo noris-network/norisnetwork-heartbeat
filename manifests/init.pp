@@ -1,7 +1,7 @@
 # Installs and configures heartbeat
 #
 # @summary Installs and configures heartbeat
-# 
+#
 # @example Basic configuration with two modules and output to Elasticsearch
 #  class{'heartbeat':
 #    monitors => [
@@ -79,7 +79,7 @@ class heartbeat (
   Optional[Variant[Stdlib::HTTPUrl, Stdlib::HTTPSUrl]] $gpg_key_url   = undef,
   String $gpg_key_id                                                  = '',
   Enum['enabled', 'running', 'disabled', 'unmanaged'] $service_ensure = 'enabled',
-  String $package_ensure                                              = 'latest',
+  String $package_ensure                                              = 'present',
   String $config_file_mode                                            = '0644',
   Boolean $disable_configtest                                         = false,
   Optional[Array[String]] $tags                                       = undef,
