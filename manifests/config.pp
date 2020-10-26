@@ -25,19 +25,27 @@ class heartbeat::config {
     },
   })
 
-  if ($heartbeat::xpack != undef) and ($heartbeat::monitoring != undef) {
-    fail('Setting both xpack and monitoring is not supported!')
-  }
-
-  # Add the 'xpack' section if supported (version >= 6.2.0)
-  if (versioncmp($facts['heartbeat_version'], '7.2.0') >= 0) and ($heartbeat::monitoring) {
-    $merged_config = deep_merge($heartbeat_config, {'monitoring' => $heartbeat::monitoring})
-  }
-  elsif (versioncmp($facts['heartbeat_version'], '6.2.0') >= 0) and ($heartbeat::xpack) {
-    $merged_config = deep_merge($heartbeat_config, {'xpack' => $heartbeat::xpack})
-  }
-  else {
-    $merged_config = $heartbeat_config
+  # Add 'monitoring' or 'xpack' section if supported (version >= 6.2.0)
+  if ($facts['heartbeat_version'] != undef) {
+    if (versioncmp($facts['heartbeat_version'], '7.2.0') >= 0) and ($heartbeat::monitoring) {
+      $merged_config = deep_merge($heartbeat_config, {'monitoring' => $heartbeat::monitoring})
+    }
+    elsif (versioncmp($facts['heartbeat_version'], '6.2.0') >= 0) and ($heartbeat::monitoring) {
+      $merged_config = deep_merge($heartbeat_config, {'xpack.monitoring' => $heartbeat::monitoring})
+    }
+    else {
+      $merged_config = $heartbeat_config
+    }
+  } else {
+    if ($heartbeat::major_version == '7' and (($heartbeat::package_ensure == 'present') or ($heartbeat::package_ensure == 'latest'))) {
+      $merged_config = deep_merge($heartbeat_config, {'monitoring' => $heartbeat::monitoring})
+    }
+    elsif ($heartbeat::major_version == '6' and (($heartbeat::package_ensure == 'present') or ($heartbeat::package_ensure == 'latest'))) {
+      $merged_config = deep_merge($heartbeat_config, {'xpack.monitoring' => $heartbeat::monitoring})
+    }
+    else {
+      $merged_config = $heartbeat_config
+    }
   }
 
   file { '/etc/heartbeat/heartbeat.yml':

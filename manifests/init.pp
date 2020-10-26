@@ -34,7 +34,7 @@
 # @param disable_configtest whether to check if the configuration file is valid before running the service.
 # @param tags the tags to add to each document.
 # @param fields the fields to add to each document.
-# @param xpack the configuration of x-pack monitoring.
+# @param monitoring adds internal monitoring. Works with both xpack.monitoring and monitoring.
 # @param monitors the monitors to watch for example icmp/tcp/http.
 # @param processors the optional processors for events enhancement.
 #
@@ -86,7 +86,6 @@ class heartbeat (
   Optional[Hash] $fields                                              = undef,
   Optional[Array[Hash]] $monitors                                     = undef,
   Optional[Array[Hash]] $processors                                   = undef,
-  Optional[Hash] $xpack                                               = undef,
   Optional[Hash] $monitoring                                          = undef,
   Optional[Hash] $setup                                               = undef,
 ) {
