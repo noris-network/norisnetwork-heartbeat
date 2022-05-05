@@ -29,14 +29,18 @@ class heartbeat::config {
     fail('Setting both xpack and monitoring is not supported!')
   }
 
-  # Add the 'xpack' section if supported (version >= 6.2.0)
-  if (versioncmp($facts['heartbeat_version'], '7.2.0') >= 0) and ($heartbeat::monitoring) {
-    $merged_config = deep_merge($heartbeat_config, {'monitoring' => $heartbeat::monitoring})
-  }
-  elsif (versioncmp($facts['heartbeat_version'], '6.2.0') >= 0) and ($heartbeat::xpack) {
-    $merged_config = deep_merge($heartbeat_config, {'xpack' => $heartbeat::xpack})
-  }
-  else {
+  if Integer($heartbeat::major_version) < 8 {
+    # Add the 'xpack' section if supported (version >= 6.2.0)
+    if (versioncmp($facts['heartbeat_version'], '7.2.0') >= 0) and ($heartbeat::monitoring) {
+      $merged_config = deep_merge($heartbeat_config, {'monitoring' => $heartbeat::monitoring})
+    }
+    elsif (versioncmp($facts['heartbeat_version'], '6.2.0') >= 0) and ($heartbeat::xpack) {
+      $merged_config = deep_merge($heartbeat_config, {'xpack' => $heartbeat::xpack})
+    }
+    else {
+      $merged_config = $heartbeat_config
+    }
+  } else {
     $merged_config = $heartbeat_config
   }
 
