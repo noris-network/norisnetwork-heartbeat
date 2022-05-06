@@ -70,7 +70,7 @@ class heartbeat (
     },
   },
   Hash $outputs                                                       = {},
-  Enum['5', '6', '7'] $major_version                                  = '7',
+  Enum['5', '6', '7', '8'] $major_version                             = '8',
   Enum['present', 'absent'] $ensure                                   = 'present',
   Enum['systemd', 'init'] $service_provider                           = 'systemd',
   Boolean $manage_repo                                                = true,
